@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <groupId>sunbox</groupId>
+    <artifactId>iceking</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>iceking-core</module>
+        <module>iceking-parent</module>
+        <module>iceking-controller</module>
+        <module>iceking-dao</module>
+        <module>iceking-impl</module>
+        <module>iceking-model</module>
+        <module>iceking-plugins</module>
+        <module>iceking-service</module>
+        <module>iceking-starter</module>
+    </modules>
+</project>
