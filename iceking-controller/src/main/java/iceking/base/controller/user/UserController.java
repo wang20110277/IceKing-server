@@ -21,4 +21,13 @@ public class UserController {
     public User getLoginUser(){
         return userService.getLoginUser();
     }
+
+    /**
+     * 测试登录
+     */
+    @GetMapping("/login")
+    @ResponseBody
+    public String login(){
+        return "success";
+    }
 }
