@@ -14,4 +14,12 @@
     <name>iceking-service</name>
     <version>${iceking-version}</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>iceking</groupId>
+            <artifactId>iceking-model</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+
 </project>

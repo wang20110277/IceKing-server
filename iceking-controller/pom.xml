@@ -14,4 +14,26 @@
     <name>iceking-controller</name>
     <version>${iceking-version}</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>iceking</groupId>
+            <artifactId>iceking-service</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>iceking</groupId>
+            <artifactId>iceking-impl</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>iceking</groupId>
+            <artifactId>iceking-model</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>iceking</groupId>
+            <artifactId>iceking-core</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 </project>

@@ -13,4 +13,17 @@
     <modelVersion>4.0.0</modelVersion>
     <name>iceking-impl</name>
     <version>${iceking-version}</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>iceking</groupId>
+            <artifactId>iceking-service</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>iceking</groupId>
+            <artifactId>iceking-dao</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 </project>
