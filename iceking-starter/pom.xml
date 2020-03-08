@@ -14,4 +14,95 @@
     <name>iceking-starter</name>
     <version>${iceking-version}</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>iceking</groupId>
+            <artifactId>iceking-controller</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>2.0.0</version>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assemble</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <platforms>
+                        <platform>unix</platform>
+                    </platforms>
+                    <configurationDirectory>conf</configurationDirectory>
+                    <includeConfigurationDirectoryInClasspath>true</includeConfigurationDirectoryInClasspath>
+                    <repositoryLayout>flat</repositoryLayout>
+                    <repositoryName>lib</repositoryName>
+                    <extraJvmArguments>-Xmx4096m -Xms4096m -Xmn1024m</extraJvmArguments>
+                    <binFileExtensions>
+                        <unix>.sh</unix>
+                    </binFileExtensions>
+                    <assembleDirectory>server</assembleDirectory>
+                    <programs>
+                        <program>
+                            <mainClass>iceking.base.SystemApplication</mainClass>
+                            <name>system-service</name>
+                        </program>
+                    </programs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <!-- test可以在环境变量中定义，也可以将下面写成绝对地址 -->
+                            <outputDirectory>${basedir}/server/conf</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <!-- basedir标识所有工程 -->
+                                    <directory>${basedir}/src/main/resources/</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.10</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/server/lib</outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>false</overWriteSnapshots>
+                            <overWriteIfNewer>true</overWriteIfNewer>
+                            <copyPom>false</copyPom>
+                            <includeScope>provided</includeScope>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

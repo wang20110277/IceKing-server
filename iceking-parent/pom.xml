@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
          xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.19.RELEASE</version>
+        <relativePath />
+        <!-- lookup parent from repository -->
+    </parent>
+
     <groupId>iceking</groupId>
     <artifactId>iceking-parent</artifactId>
     <packaging>pom</packaging>
@@ -8,10 +16,35 @@
     <name>iceking-parent</name>
     <version>1.0</version>
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
         <skip-test>true</skip-test>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <dependencies>
+        <!--支持web项目-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>sunbox</id>
+            <name>sunbox-nexus</name>
+            <url>http://47.92.71.36:8081/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <build>
         <plugins>
             <!-- java编译 -->
@@ -64,6 +97,7 @@
                 </executions>
             </plugin>
         </plugins>
+        <defaultGoal>compile</defaultGoal>
         <resources>
             <resource>
                 <directory>${project.basedir}/src/main/resources</directory>
