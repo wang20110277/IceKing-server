@@ -6,14 +6,14 @@
     <version>1.0</version>
     <modelVersion>4.0.0</modelVersion>
     <modules>
-        <module>iceking-core</module>
         <module>iceking-parent</module>
-        <module>iceking-controller</module>
+        <module>iceking-core</module>
+        <module>iceking-model</module>
+        <module>iceking-service</module>
         <module>iceking-dao</module>
         <module>iceking-impl</module>
-        <module>iceking-model</module>
         <module>iceking-plugins</module>
-        <module>iceking-service</module>
+        <module>iceking-controller</module>
         <module>iceking-starter</module>
     </modules>
 </project>
