@@ -17,7 +17,7 @@ public class FilterConfig {
         FilterRegistrationBean filterRegistrationBean=new FilterRegistrationBean();
         filterRegistrationBean.setFilter(commonFilter);
         filterRegistrationBean.setOrder(1);
-        filterRegistrationBean.addUrlPatterns("/api/*");
+        filterRegistrationBean.addUrlPatterns("/api/*","/user/*");
         filterRegistrationBean.setName("commonFilter");
         return filterRegistrationBean;
     }

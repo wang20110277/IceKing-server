@@ -1,8 +1,8 @@
 package iceking.base.service.user;
 
-import iceking.base.model.User;
+import iceking.base.entity.SysUser;
 
 public interface UserService {
-    User getLoginUser();
-    String login(User user);
+    SysUser getLoginUser(Integer id);
+    String login(SysUser user);
 }

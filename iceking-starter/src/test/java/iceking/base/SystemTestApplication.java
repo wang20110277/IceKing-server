@@ -21,8 +21,6 @@ public class SystemTestApplication {
 
     @Test
     public void loginTest(){
-        User user=new User();
-        String result=userController.login(user);
-        System.out.println(result);
+
     }
 }

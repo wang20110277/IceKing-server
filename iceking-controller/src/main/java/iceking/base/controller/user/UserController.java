@@ -1,6 +1,6 @@
 package iceking.base.controller.user;
 
-import iceking.base.model.User;
+import iceking.base.entity.SysUser;
 import iceking.base.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +15,8 @@ public class UserController {
      */
     @GetMapping("/getLoginUser")
     @ResponseBody
-    public User getLoginUser(){
-        return userService.getLoginUser();
+    public SysUser getLoginUser(@RequestParam(required = true) Integer id){
+        return userService.getLoginUser(id);
     }
 
     /**
@@ -24,7 +24,7 @@ public class UserController {
      */
     @PostMapping("/login")
     @ResponseBody
-    public String login(User user){
+    public String login(SysUser user){
         return userService.login(user);
     }
 }
