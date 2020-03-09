@@ -1,7 +1,7 @@
 package iceking.base;
 
 import iceking.base.controller.user.UserController;
-import iceking.base.entity.User;
+import iceking.base.model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

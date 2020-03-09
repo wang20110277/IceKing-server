@@ -1,6 +1,6 @@
 package iceking.base.controller.user;
 
-import iceking.base.entity.User;
+import iceking.base.model.User;
 import iceking.base.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

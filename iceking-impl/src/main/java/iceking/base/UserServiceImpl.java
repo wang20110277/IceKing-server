@@ -1,6 +1,6 @@
 package iceking.base;
 
-import iceking.base.entity.User;
+import iceking.base.model.User;
 import iceking.base.service.user.UserService;
 import org.springframework.stereotype.Service;
 

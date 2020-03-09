@@ -1,4 +1,4 @@
-package iceking.base.entity;
+package iceking.base.model;
 
 public class User {
     private Long userId;

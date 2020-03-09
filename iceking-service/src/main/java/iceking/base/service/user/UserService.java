@@ -1,6 +1,6 @@
 package iceking.base.service.user;
 
-import iceking.base.entity.User;
+import iceking.base.model.User;
 
 public interface UserService {
     User getLoginUser();
