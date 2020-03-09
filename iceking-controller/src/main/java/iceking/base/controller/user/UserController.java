@@ -3,18 +3,15 @@ package iceking.base.controller.user;
 import iceking.base.entity.User;
 import iceking.base.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
     /**
-     * 测试登录
+     * 当前登录用户
      */
     @GetMapping("/getLoginUser")
     @ResponseBody
@@ -23,11 +20,11 @@ public class UserController {
     }
 
     /**
-     * 测试登录
+     * 登录验证
      */
-    @GetMapping("/login")
+    @PostMapping("/login")
     @ResponseBody
-    public String login(){
-        return "success";
+    public String login(User user){
+        return userService.login(user);
     }
 }
