@@ -1,5 +1,6 @@
-package iceking.base.shiro;
+package iceking.base.config.auth;
 
+import iceking.base.shiro.CommonRealm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;

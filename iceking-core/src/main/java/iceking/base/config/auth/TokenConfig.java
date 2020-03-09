@@ -1,11 +1,11 @@
-package iceking.base.jwt;
+package iceking.base.config.auth;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationProperties(prefix = "jwt")
-public class TokenSettings {
+public class TokenConfig {
     private String secretKey;
     private String issuer;
 
