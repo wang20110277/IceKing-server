@@ -18,12 +18,6 @@
         <dependency>
             <groupId>iceking</groupId>
             <artifactId>iceking-service</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>iceking</groupId>
-            <artifactId>iceking-dao</artifactId>
-            <version>1.0</version>
         </dependency>
     </dependencies>
 </project>

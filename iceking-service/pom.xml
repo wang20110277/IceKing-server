@@ -17,8 +17,11 @@
     <dependencies>
         <dependency>
             <groupId>iceking</groupId>
-            <artifactId>iceking-model</artifactId>
-            <version>1.0</version>
+            <artifactId>iceking-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>iceking</groupId>
+            <artifactId>iceking-dao</artifactId>
         </dependency>
     </dependencies>
 
