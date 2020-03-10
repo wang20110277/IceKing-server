@@ -3,7 +3,6 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
-
 <generatorConfiguration>
     <!--指定特定数据库的jdbc驱动jar包的位置-->
     <!-- 暂时不清楚怎么指定相对路径，只能指定maven仓库中的jar包 -->
@@ -59,7 +58,6 @@
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
-
 
         <table tableName="sys_user"
                domainObjectName="SysUser"
