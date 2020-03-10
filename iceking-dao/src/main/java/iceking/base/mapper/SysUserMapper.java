@@ -1,5 +1,6 @@
 package iceking.base.mapper;
 
+import com.github.pagehelper.Page;
 import iceking.base.entity.SysUser;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +17,6 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+
+    Page<SysUser> selectAll();
 }

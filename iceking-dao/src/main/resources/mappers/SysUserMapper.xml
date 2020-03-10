@@ -24,6 +24,11 @@
     id, user_name, real_name, password, gender, phone, mobile, email, sort, state, creator_id, 
     creator, create_time, modifier_id, modifier, modify_time, ou_code
   </sql>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_user
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

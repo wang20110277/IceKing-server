@@ -1,5 +1,6 @@
 package iceking.base;
 
+import com.github.pagehelper.Page;
 import iceking.base.entity.SysUser;
 import iceking.base.mapper.SysUserMapper;
 import iceking.base.service.user.UserService;
@@ -19,5 +20,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public String login(SysUser user) {
         return "success";
+    }
+
+    @Override
+    public Page<SysUser> getAllUsers() {
+        return sysUserMapper.selectAll();
     }
 }
