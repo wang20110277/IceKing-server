@@ -38,7 +38,7 @@ public class UserController {
      */
     @GetMapping("/getAllUsers")
     @ResponseBody
-    public PageInfo<SysUser> getAllUsers(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer size){
+    public PageInfo<SysUser> getAllUsers(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "5") Integer size){
         PageHelper.startPage(page,size);
         PageInfo<SysUser> users=new PageInfo<>(userService.getAllUsers());
         return users;
