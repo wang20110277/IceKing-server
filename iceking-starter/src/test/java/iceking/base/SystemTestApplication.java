@@ -3,30 +3,43 @@ package iceking.base;
 import iceking.base.controller.user.SysUserController;
 import iceking.base.entity.SysUser;
 import iceking.base.page.PageRequest;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SystemTestApplication {
+    private MockMvc mvc;
 
-    @Autowired
-    private SysUserController sysUserController;
-
-    @Test
-    public void findAllSysUsersTest(){
-        PageRequest pageRequest=new PageRequest();
-        pageRequest.setPageNum(1);
-        pageRequest.setPageSize(10);
-        sysUserController.findAllSysUsers(pageRequest);
+    @Before
+    public void setUp() throws Exception {
+        mvc = MockMvcBuilders.standaloneSetup(new SysUserController()).build();
     }
 
     @Test
-    public void findByUserNameTest(){
-        String name="刘备";
-        sysUserController.findByUserName(name);
+    public void findAllSysUsersTest() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/user/findByName").accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+    }
+
+
+    @Test
+    public void findByUserNameTest() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/user/findAllSysUsers").accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
     }
 }
