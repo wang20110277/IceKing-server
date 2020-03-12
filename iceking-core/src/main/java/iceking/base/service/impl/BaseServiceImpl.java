@@ -8,7 +8,7 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
     public abstract BaseMapper<T> getMapper();
 
     @Override
-    public int deleteByPrimaryKey(Integer id) {
+    public int deleteByPrimaryKey(Long id) {
         return getMapper().deleteByPrimaryKey(id);
     }
 
@@ -23,7 +23,7 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
     }
 
     @Override
-    public T selectByPrimaryKey(Integer id) {
+    public T selectByPrimaryKey(Long id) {
         return getMapper().selectByPrimaryKey(id);
     }
 

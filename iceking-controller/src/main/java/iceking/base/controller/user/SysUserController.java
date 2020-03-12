@@ -17,6 +17,11 @@ public class SysUserController {
     @Autowired
     private SysUserService sysUserService;
 
+    @GetMapping(value="/findByUserId")
+    public Object findByUserId(@RequestParam Long userId) {
+        return sysUserService.selectByPrimaryKey(userId);
+    }
+
     /* 方法注解 */
     @ApiOperation(value = "/findByName", notes = "")
     @GetMapping(value="/findByName")

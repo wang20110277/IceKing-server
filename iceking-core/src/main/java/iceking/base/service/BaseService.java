@@ -1,13 +1,13 @@
 package iceking.base.service;
 
 public interface BaseService<T> {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(T t);
 
     int insertSelective(T t);
 
-    T selectByPrimaryKey(Integer id);
+    T selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(T t);
 
