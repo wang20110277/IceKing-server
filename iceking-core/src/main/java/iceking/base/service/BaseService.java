@@ -1,7 +1,5 @@
 package iceking.base.service;
 
-import iceking.base.page.PageResult;
-
 public interface BaseService<T> {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,6 +12,4 @@ public interface BaseService<T> {
     int updateByPrimaryKeySelective(T t);
 
     int updateByPrimaryKey(T t);
-
-    PageResult<T> selectAll();
 }

@@ -14,6 +14,4 @@ public interface BaseMapper<T> {
     int updateByPrimaryKeySelective(T t);
 
     int updateByPrimaryKey(T t);
-
-    PageResult<T> selectAll();
 }

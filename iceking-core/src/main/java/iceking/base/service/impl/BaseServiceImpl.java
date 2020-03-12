@@ -1,7 +1,6 @@
 package iceking.base.service.impl;
 
 import iceking.base.mapper.BaseMapper;
-import iceking.base.page.PageResult;
 import iceking.base.service.BaseService;
 
 public abstract class BaseServiceImpl<T> implements BaseService<T> {
@@ -36,10 +35,5 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
     @Override
     public int updateByPrimaryKey(T t) {
         return getMapper().updateByPrimaryKey(t);
-    }
-
-    @Override
-    public PageResult<T> selectAll() {
-        return getMapper().selectAll();
     }
 }
