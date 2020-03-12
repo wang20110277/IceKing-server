@@ -20,11 +20,6 @@
     id, name, password, salt, email, mobile, status, dept_id, create_by, create_time, 
     last_update_by, last_update_time, del_flag
   </sql>
-  <select id="selectAll" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from sys_user
-  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -190,4 +185,32 @@
       del_flag = #{delFlag,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="findByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_user
+    where name = #{name,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_user
+  </select>
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <bind name="pattern" value="'%' + _parameter.name + '%'" />
+    select
+    <include refid="Base_Column_List" />
+    from sys_user
+    where name like #{pattern}
+  </select>
+  <select id="selectByNameAndEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <bind name="patternName" value="'%' + _parameter.name + '%'" />
+    <bind name="patternEmail" value="'%' + _parameter.email + '%'" />
+    select
+    <include refid="Base_Column_List" />
+    from sys_user
+    where name like #{patternName}
+    and email like #{patternEmail}
+  </select>
 </mapper>

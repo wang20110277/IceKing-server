@@ -1,7 +1,5 @@
 package iceking.base.mapper;
 
-import iceking.base.page.PageResult;
-
 public interface BaseMapper<T> {
     int deleteByPrimaryKey(Integer id);
 

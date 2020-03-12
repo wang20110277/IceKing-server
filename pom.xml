@@ -8,7 +8,6 @@
     <modules>
         <module>iceking-parent</module>
         <module>iceking-core</module>
-        <module>iceking-model</module>
         <module>iceking-service</module>
         <module>iceking-dao</module>
         <module>iceking-plugins</module>

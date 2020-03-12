@@ -1,7 +1,6 @@
 package iceking.base.service.user.impl;
 
 import iceking.base.entity.SysUser;
-import iceking.base.mapper.BaseMapper;
 import iceking.base.mapper.SysUserMapper;
 import iceking.base.page.MybatisPageHelper;
 import iceking.base.page.PageRequest;
@@ -11,6 +10,7 @@ import iceking.base.service.user.SysUserService;
 import iceking.base.utils.ColumnFilterUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 @Service
 public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements SysUserService {
@@ -18,8 +18,13 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements SysU
     private SysUserMapper sysUserMapper;
 
     @Override
-    public BaseMapper<SysUser> getMapper() {
+    public SysUserMapper getMapper() {
         return sysUserMapper;
+    }
+
+    @Override
+    public SysUser findByName(String name) {
+        return getMapper().findByName(name);
     }
 
     @Override
@@ -27,16 +32,15 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements SysU
         PageResult pageResult = null;
         String name = ColumnFilterUtils.getColumnFilterValue(pageRequest, "name");
         String email = ColumnFilterUtils.getColumnFilterValue(pageRequest, "email");
-        if(name != null) {
-            if(email != null) {
-                pageResult = MybatisPageHelper.findPage(pageRequest, getMapper(), "findPageByNameAndEmail", name, email);
+        if(!StringUtils.isEmpty(name)) {
+            if(!StringUtils.isEmpty(email)) {
+                pageResult = MybatisPageHelper.findPage(pageRequest, getMapper(), "selectByNameAndEmail", name, email);
             } else {
-                pageResult = MybatisPageHelper.findPage(pageRequest, getMapper(), "findPageByName", name);
+                pageResult = MybatisPageHelper.findPage(pageRequest, getMapper(), "selectByName", name);
             }
         } else {
             pageResult = MybatisPageHelper.findPage(pageRequest, getMapper());
         }
-        // 加载用户角色信息
         return pageResult;
     }
 }

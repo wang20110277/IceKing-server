@@ -1,6 +1,7 @@
 package iceking.base;
 
 import iceking.base.controller.user.SysUserController;
+import iceking.base.entity.SysUser;
 import iceking.base.page.PageRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,5 +22,11 @@ public class SystemTestApplication {
         pageRequest.setPageNum(1);
         pageRequest.setPageSize(10);
         sysUserController.findAllSysUsers(pageRequest);
+    }
+
+    @Test
+    public void findByUserNameTest(){
+        String name="刘备";
+        sysUserController.findByUserName(name);
     }
 }
