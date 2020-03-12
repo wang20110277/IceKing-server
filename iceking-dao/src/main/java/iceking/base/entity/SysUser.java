@@ -3,62 +3,46 @@ package iceking.base.entity;
 import java.util.Date;
 
 public class SysUser {
-    private Integer id;
+    private Long id;
 
-    private String userName;
-
-    private String realName;
+    private String name;
 
     private String password;
 
-    private Integer gender;
-
-    private String phone;
-
-    private String mobile;
+    private String salt;
 
     private String email;
 
-    private Integer sort;
+    private String mobile;
 
-    private Integer state;
+    private Byte status;
 
-    private Integer creatorId;
+    private Long deptId;
 
-    private String creator;
+    private String createBy;
 
     private Date createTime;
 
-    private String modifierId;
+    private String lastUpdateBy;
 
-    private String modifier;
+    private Date lastUpdateTime;
 
-    private Date modifyTime;
+    private Byte delFlag;
 
-    private String ouCode;
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
@@ -69,28 +53,12 @@ public class SysUser {
         this.password = password;
     }
 
-    public Integer getGender() {
-        return gender;
+    public String getSalt() {
+        return salt;
     }
 
-    public void setGender(Integer gender) {
-        this.gender = gender;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     public String getEmail() {
@@ -101,36 +69,36 @@ public class SysUser {
         this.email = email;
     }
 
-    public Integer getSort() {
-        return sort;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setSort(Integer sort) {
-        this.sort = sort;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
-    public Integer getState() {
-        return state;
+    public Byte getStatus() {
+        return status;
     }
 
-    public void setState(Integer state) {
-        this.state = state;
+    public void setStatus(Byte status) {
+        this.status = status;
     }
 
-    public Integer getCreatorId() {
-        return creatorId;
+    public Long getDeptId() {
+        return deptId;
     }
 
-    public void setCreatorId(Integer creatorId) {
-        this.creatorId = creatorId;
+    public void setDeptId(Long deptId) {
+        this.deptId = deptId;
     }
 
-    public String getCreator() {
-        return creator;
+    public String getCreateBy() {
+        return createBy;
     }
 
-    public void setCreator(String creator) {
-        this.creator = creator;
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
     }
 
     public Date getCreateTime() {
@@ -141,36 +109,28 @@ public class SysUser {
         this.createTime = createTime;
     }
 
-    public String getModifierId() {
-        return modifierId;
+    public String getLastUpdateBy() {
+        return lastUpdateBy;
     }
 
-    public void setModifierId(String modifierId) {
-        this.modifierId = modifierId;
+    public void setLastUpdateBy(String lastUpdateBy) {
+        this.lastUpdateBy = lastUpdateBy;
     }
 
-    public String getModifier() {
-        return modifier;
+    public Date getLastUpdateTime() {
+        return lastUpdateTime;
     }
 
-    public void setModifier(String modifier) {
-        this.modifier = modifier;
+    public void setLastUpdateTime(Date lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
     }
 
-    public Date getModifyTime() {
-        return modifyTime;
+    public Byte getDelFlag() {
+        return delFlag;
     }
 
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public String getOuCode() {
-        return ouCode;
-    }
-
-    public void setOuCode(String ouCode) {
-        this.ouCode = ouCode;
+    public void setDelFlag(Byte delFlag) {
+        this.delFlag = delFlag;
     }
 
     @Override
@@ -180,22 +140,18 @@ public class SysUser {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", userName=").append(userName);
-        sb.append(", realName=").append(realName);
+        sb.append(", name=").append(name);
         sb.append(", password=").append(password);
-        sb.append(", gender=").append(gender);
-        sb.append(", phone=").append(phone);
-        sb.append(", mobile=").append(mobile);
+        sb.append(", salt=").append(salt);
         sb.append(", email=").append(email);
-        sb.append(", sort=").append(sort);
-        sb.append(", state=").append(state);
-        sb.append(", creatorId=").append(creatorId);
-        sb.append(", creator=").append(creator);
+        sb.append(", mobile=").append(mobile);
+        sb.append(", status=").append(status);
+        sb.append(", deptId=").append(deptId);
+        sb.append(", createBy=").append(createBy);
         sb.append(", createTime=").append(createTime);
-        sb.append(", modifierId=").append(modifierId);
-        sb.append(", modifier=").append(modifier);
-        sb.append(", modifyTime=").append(modifyTime);
-        sb.append(", ouCode=").append(ouCode);
+        sb.append(", lastUpdateBy=").append(lastUpdateBy);
+        sb.append(", lastUpdateTime=").append(lastUpdateTime);
+        sb.append(", delFlag=").append(delFlag);
         sb.append("]");
         return sb.toString();
     }

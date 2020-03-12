@@ -2,56 +2,50 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="iceking.base.mapper.SysUserMapper">
   <resultMap id="BaseResultMap" type="iceking.base.entity.SysUser">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="gender" jdbcType="INTEGER" property="gender" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
     <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="sort" jdbcType="INTEGER" property="sort" />
-    <result column="state" jdbcType="INTEGER" property="state" />
-    <result column="creator_id" jdbcType="INTEGER" property="creatorId" />
-    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="dept_id" jdbcType="BIGINT" property="deptId" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="modifier_id" jdbcType="VARCHAR" property="modifierId" />
-    <result column="modifier" jdbcType="VARCHAR" property="modifier" />
-    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
-    <result column="ou_code" jdbcType="VARCHAR" property="ouCode" />
+    <result column="last_update_by" jdbcType="VARCHAR" property="lastUpdateBy" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+    <result column="del_flag" jdbcType="TINYINT" property="delFlag" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, user_name, real_name, password, gender, phone, mobile, email, sort, state, creator_id, 
-    creator, create_time, modifier_id, modifier, modify_time, ou_code
+    id, name, password, salt, email, mobile, status, dept_id, create_by, create_time, 
+    last_update_by, last_update_time, del_flag
   </sql>
-  <select id="selectAll" resultMap="BaseResultMap">
+  <select id="selectAll" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from sys_user
+    from sys_user limit 1000
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from sys_user
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from sys_user
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="iceking.base.entity.SysUser">
-    insert into sys_user (id, user_name, real_name, 
-      password, gender, phone, 
-      mobile, email, sort, 
-      state, creator_id, creator, 
-      create_time, modifier_id, modifier, 
-      modify_time, ou_code)
-    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
-      #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
-      #{state,jdbcType=INTEGER}, #{creatorId,jdbcType=INTEGER}, #{creator,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{modifierId,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR}, 
-      #{modifyTime,jdbcType=TIMESTAMP}, #{ouCode,jdbcType=VARCHAR})
+    insert into sys_user (id, name, password, 
+      salt, email, mobile, 
+      status, dept_id, create_by, 
+      create_time, last_update_by, last_update_time, 
+      del_flag)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{salt,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{deptId,jdbcType=BIGINT}, #{createBy,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{delFlag,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="iceking.base.entity.SysUser">
     insert into sys_user
@@ -59,181 +53,141 @@
       <if test="id != null">
         id,
       </if>
-      <if test="userName != null">
-        user_name,
-      </if>
-      <if test="realName != null">
-        real_name,
+      <if test="name != null">
+        name,
       </if>
       <if test="password != null">
         password,
       </if>
-      <if test="gender != null">
-        gender,
-      </if>
-      <if test="phone != null">
-        phone,
-      </if>
-      <if test="mobile != null">
-        mobile,
+      <if test="salt != null">
+        salt,
       </if>
       <if test="email != null">
         email,
       </if>
-      <if test="sort != null">
-        sort,
+      <if test="mobile != null">
+        mobile,
       </if>
-      <if test="state != null">
-        state,
+      <if test="status != null">
+        status,
       </if>
-      <if test="creatorId != null">
-        creator_id,
+      <if test="deptId != null">
+        dept_id,
       </if>
-      <if test="creator != null">
-        creator,
+      <if test="createBy != null">
+        create_by,
       </if>
       <if test="createTime != null">
         create_time,
       </if>
-      <if test="modifierId != null">
-        modifier_id,
+      <if test="lastUpdateBy != null">
+        last_update_by,
       </if>
-      <if test="modifier != null">
-        modifier,
+      <if test="lastUpdateTime != null">
+        last_update_time,
       </if>
-      <if test="modifyTime != null">
-        modify_time,
-      </if>
-      <if test="ouCode != null">
-        ou_code,
+      <if test="delFlag != null">
+        del_flag,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
-      <if test="userName != null">
-        #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="realName != null">
-        #{realName,jdbcType=VARCHAR},
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="gender != null">
-        #{gender,jdbcType=INTEGER},
-      </if>
-      <if test="phone != null">
-        #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="mobile != null">
-        #{mobile,jdbcType=VARCHAR},
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
       </if>
       <if test="email != null">
         #{email,jdbcType=VARCHAR},
       </if>
-      <if test="sort != null">
-        #{sort,jdbcType=INTEGER},
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
       </if>
-      <if test="state != null">
-        #{state,jdbcType=INTEGER},
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
       </if>
-      <if test="creatorId != null">
-        #{creatorId,jdbcType=INTEGER},
+      <if test="deptId != null">
+        #{deptId,jdbcType=BIGINT},
       </if>
-      <if test="creator != null">
-        #{creator,jdbcType=VARCHAR},
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="modifierId != null">
-        #{modifierId,jdbcType=VARCHAR},
+      <if test="lastUpdateBy != null">
+        #{lastUpdateBy,jdbcType=VARCHAR},
       </if>
-      <if test="modifier != null">
-        #{modifier,jdbcType=VARCHAR},
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="modifyTime != null">
-        #{modifyTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="ouCode != null">
-        #{ouCode,jdbcType=VARCHAR},
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="iceking.base.entity.SysUser">
     update sys_user
     <set>
-      <if test="userName != null">
-        user_name = #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="realName != null">
-        real_name = #{realName,jdbcType=VARCHAR},
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="gender != null">
-        gender = #{gender,jdbcType=INTEGER},
-      </if>
-      <if test="phone != null">
-        phone = #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="mobile != null">
-        mobile = #{mobile,jdbcType=VARCHAR},
+      <if test="salt != null">
+        salt = #{salt,jdbcType=VARCHAR},
       </if>
       <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
       </if>
-      <if test="sort != null">
-        sort = #{sort,jdbcType=INTEGER},
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
       </if>
-      <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
       </if>
-      <if test="creatorId != null">
-        creator_id = #{creatorId,jdbcType=INTEGER},
+      <if test="deptId != null">
+        dept_id = #{deptId,jdbcType=BIGINT},
       </if>
-      <if test="creator != null">
-        creator = #{creator,jdbcType=VARCHAR},
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="modifierId != null">
-        modifier_id = #{modifierId,jdbcType=VARCHAR},
+      <if test="lastUpdateBy != null">
+        last_update_by = #{lastUpdateBy,jdbcType=VARCHAR},
       </if>
-      <if test="modifier != null">
-        modifier = #{modifier,jdbcType=VARCHAR},
+      <if test="lastUpdateTime != null">
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="modifyTime != null">
-        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="ouCode != null">
-        ou_code = #{ouCode,jdbcType=VARCHAR},
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=TINYINT},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="iceking.base.entity.SysUser">
     update sys_user
-    set user_name = #{userName,jdbcType=VARCHAR},
-      real_name = #{realName,jdbcType=VARCHAR},
+    set name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      gender = #{gender,jdbcType=INTEGER},
-      phone = #{phone,jdbcType=VARCHAR},
-      mobile = #{mobile,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      sort = #{sort,jdbcType=INTEGER},
-      state = #{state,jdbcType=INTEGER},
-      creator_id = #{creatorId,jdbcType=INTEGER},
-      creator = #{creator,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      dept_id = #{deptId,jdbcType=BIGINT},
+      create_by = #{createBy,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      modifier_id = #{modifierId,jdbcType=VARCHAR},
-      modifier = #{modifier,jdbcType=VARCHAR},
-      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
-      ou_code = #{ouCode,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+      last_update_by = #{lastUpdateBy,jdbcType=VARCHAR},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      del_flag = #{delFlag,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

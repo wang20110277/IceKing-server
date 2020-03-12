@@ -19,9 +19,5 @@
             <groupId>iceking</groupId>
             <artifactId>iceking-service</artifactId>
         </dependency>
-        <dependency>
-            <groupId>iceking</groupId>
-            <artifactId>iceking-impl</artifactId>
-        </dependency>
     </dependencies>
 </project>
